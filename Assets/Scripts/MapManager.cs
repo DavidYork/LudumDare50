@@ -1,11 +1,17 @@
 using UnityEngine;
 
 public class MapManager: MonoBehaviour {
+    [SerializeField] GameObject[] mapAnchors;
+
     public void Show() {
-        gameObject.SetActive(true);
+        foreach (var anchor in mapAnchors) {
+            anchor.SetActive(true);
+        }
     }
 
     public void Hide() {
-        gameObject.SetActive(false);
+        foreach (var anchor in mapAnchors) {
+            anchor.SetActive(false);
+        }
     }
 }

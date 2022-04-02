@@ -29,6 +29,7 @@ public class HexFactory: MonoBehaviour {
         tile.transform.SetParent(parent);
         var spacing = new Vector2(map.tilewidth, map.tileheight);
         tile.transform.localPosition = getHexPos(pos, spacing) - mapOffset;
+        tile.name = $"Tile {pos} ({mapTileID})";
         return tile;
     }
 

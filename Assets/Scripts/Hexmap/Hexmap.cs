@@ -10,6 +10,8 @@ public class Hexmap: MonoBehaviour {
         (float)info.width * (float)info.tilewidth * .75f - info.width,
         (float)info.height * (float)info.tileheight);
 
+    public HexTile GetHexTile(Vector2Int pos) => Tiles[pos.x, pos.y];
+
     public void Setup(TMXMapInfo info, int layerNum = 0) {
         this.info = info;
 

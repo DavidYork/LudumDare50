@@ -4,32 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using Ink.Runtime;
 
-static class Extensions {
-	public static TEnum ToEnum<TEnum>(this InkList src) where TEnum: struct, System.Enum {
-		var values = src.Values;
-		var enumerator = values.GetEnumerator();
-		enumerator.MoveNext();
-		var val = enumerator.Current;
-
-		TEnum enumVal = (TEnum)Enum.ToObject(typeof(TEnum) , val - 1);
-		return enumVal;
-	}
-
-	public static void SetVariableToListItem<TEnum>(this Story story, string name, TEnum newValue)
-		where TEnum: struct, Enum
-	{
-		var fullName = $"{newValue.GetType()}";
-		var enumName = fullName.Substring(fullName.LastIndexOf('+') + 1);
-		var newList = new Ink.Runtime.InkList(enumName, story);
-		newList.AddItem($"{newValue}");
-		story.variablesState[name] = newList;
-	}
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public struct Command {
-    public string Description => _choice.text;
+    public string Description => _choice.text.Sanitize();
     public int ChoiceIndex => _choice.index;
 
     Choice _choice;
@@ -56,22 +34,12 @@ public class CommandEngine: MonoBehaviour {
         Ludum.Dare.Commands.RebuildActions();
     }
 
-    public bool GetEvent(Event evt) {
-        bool val = false;
-        _events.TryGetValue(evt, out val);
-        return val;
-    }
-
-    public void SetEvent(Event evt, bool val) {
-        _events[evt] = val;
-    }
 
     public void GetCommands(out string text, out Command[] commands) {
-        // TODO: Jump directly to the commands section of the story
         var sb = new StringBuilder();
         while (_story.canContinue) {
-            sb.Append(_story.Continue());
-            sb.Append('\n');
+            var storyBit = _story.Continue();
+            sb.Append(storyBit.Sanitize());
         }
         text = sb.ToString();
 
@@ -88,9 +56,47 @@ public class CommandEngine: MonoBehaviour {
 		_story = new Story (_inkJSONAsset.text);
         _story.BindExternalFunction("DoGoOutside", doGoOutside);
         _story.BindExternalFunction("DoGoToBed", doGoToBed);
+
+        _story.BindExternalFunction("GetCost", (string costName) => GetCost(Enum.Parse<Cost>(costName)));
+        _story.BindExternalFunction("GetEvent", (string eventName) => GetEvent(Enum.Parse<Event>(eventName)));
+        _story.BindExternalFunction("TryPurchase", (string costName) => tryPurchase(Enum.Parse<Cost>(costName)));
+
+        _story.BindExternalFunction("SetEvent", (string eventName, bool val) =>
+            SetEvent(Enum.Parse<Event>(eventName), val));
+
     }
+
 
     // Ink interop
     void doGoOutside() => Ludum.Dare.State.Current = State.Map;
-    void doGoToBed() => Debug.LogWarning("TODO: Implement going to bed. IRONIC!");
+    void doGoToBed() => Ludum.Dare.GM.DoEndDay();
+
+    bool tryPurchase(Cost item) {
+        var cost = Ludum.Dare.Data.GetCost(item);
+        var res = Ludum.Dare.Resources;
+
+        if (res.Scrap.Amount < cost.Scrap || res.Fungus.Amount < cost.Fungus ||
+            res.Energy.Amount < cost.Energy || res.Energy.Max < cost.Batteries)
+        {
+
+            return false;
+        }
+        res.Scrap.Amount -= cost.Scrap;
+        res.Energy.Amount -= cost.Energy;
+        res.Energy.Max -= cost.Batteries;
+        res.Fungus.Amount -= cost.Fungus;
+        return true;
+    }
+
+    string GetCost(Cost cost) => Ludum.Dare.Data.GetCost(cost).ToString();
+
+    bool GetEvent(Event evt) {
+        bool val = false;
+        _events.TryGetValue(evt, out val);
+        return val;
+    }
+
+    void SetEvent(Event evt, bool val) {
+        _events[evt] = val;
+    }
 }

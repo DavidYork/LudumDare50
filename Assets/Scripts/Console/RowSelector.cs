@@ -88,12 +88,12 @@ public class RowSelector: MonoBehaviour {
 
     void Update() {
         if (IsFocused) {
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
+            if (Input.GetKeyDown(KeyCode.DownArrow)) {// || Input.GetKeyDown(KeyCode.S)) {
                 if (SelectedIndex + 1 < rows.Count) {
                     SelectedIndex++;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
+            if (Input.GetKeyDown(KeyCode.UpArrow)) {// || Input.GetKeyDown(KeyCode.W)) {
                 if (SelectedIndex > 0) {
                     SelectedIndex--;
                 }

@@ -7,13 +7,13 @@ public class LudumEditor: Editor {
         var ld = (Ludum)target;
 
         if (GUILayout.Button("Show Map")) {
-            ld.State.Current = StateManager.State.Map;
+            ld.State.Current = State.Map;
         }
         if (GUILayout.Button("Show Hab")) {
-            ld.State.Current = StateManager.State.Hab;
+            ld.State.Current = State.Hab;
         }
         if (GUILayout.Button("Show Dream")) {
-            ld.State.Current = StateManager.State.Dream;
+            ld.State.Current = State.Dream;
         }
 		base.OnInspectorGUI();
     }

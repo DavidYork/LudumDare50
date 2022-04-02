@@ -18,6 +18,11 @@ public class Ludum: MonoBehaviour {
     public StateManager State;
     public Factory Factory;
     public ComputerManager Computer;
+    public DreamManager Dream;
+    public GameMaster GM;
+    public Database Data;
+    public World World;
+    public RoverManager Rover;
 
     // Private
 

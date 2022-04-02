@@ -11,10 +11,10 @@ public class ResourcesView: MonoBehaviour {
         get => _amount;
         set {
             _amount = value;
-            _amountText.text = $"{_amount}";
             if (_amount > 0) {
                 gameObject.SetActive(true);
             }
+            refreshText();
         }
     }
 

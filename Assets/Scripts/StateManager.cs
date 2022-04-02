@@ -1,9 +1,7 @@
 using UnityEngine;
 
 public class StateManager: MonoBehaviour {
-    public enum State {
-        Uninitialized, Hab, Map, Dream, Dead
-    }
+    State _state;
 
     public State Current {
         get => _state;
@@ -11,22 +9,33 @@ public class StateManager: MonoBehaviour {
             _state = value;
             switch (value) {
             case State.Hab:
+                Ludum.Dare.Commands.GainFocus();
                 Ludum.Dare.Hab.Show();
                 Ludum.Dare.Map.Hide();
                 setupCommands();
+                Ludum.Dare.Dream.Hide();
+                Ludum.Dare.Computer.SetText("You are inside the Hab.");
                 break;
             case State.Map:
+                Ludum.Dare.Commands.LoseFocus();
                 Ludum.Dare.Hab.Hide();
                 Ludum.Dare.Map.Show();
                 setupCommands();
+                Ludum.Dare.Dream.Hide();
+                Ludum.Dare.Computer.SetText("You are in your rover, outside the Hab.");
+                Ludum.Dare.Rover.OnEnterMapState();
                 break;
             case State.Dream:
+                Ludum.Dare.Commands.LoseFocus();
                 Ludum.Dare.Hab.Hide();
                 Ludum.Dare.Map.Hide();
+                Ludum.Dare.Dream.DoNextDream();
                 break;
             case State.Dead:
+                Ludum.Dare.Commands.LoseFocus();
                 Ludum.Dare.Hab.Hide();
                 Ludum.Dare.Map.Hide();
+                Ludum.Dare.Dream.Hide();
                 break;
             default:
                 Debug.LogError($"Cannot understand {value}");
@@ -35,8 +44,6 @@ public class StateManager: MonoBehaviour {
         }
     }
 
-    State _state;
-
     // Private
 
     void setupCommands() {
@@ -44,10 +51,5 @@ public class StateManager: MonoBehaviour {
             return;
         }
         Ludum.Dare.Commands.RebuildActions();
-    }
-
-    void Start() {
-        // TODO: Start game here and now
-        Current = State.Hab;
     }
 }

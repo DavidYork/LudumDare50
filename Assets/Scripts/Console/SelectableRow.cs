@@ -49,9 +49,7 @@ public class SelectableRow: MonoBehaviour {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)
-            || Input.GetKeyDown(KeyCode.Space))
-        {
+        if (Kbd.NextPressed(0)) {
             Callback();
         }
     }

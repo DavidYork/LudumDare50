@@ -9,14 +9,17 @@ public class CommandManager: MonoBehaviour {
     CommandEngine engine {
         get {
             switch (Ludum.Dare.State.Current) {
-                case StateManager.State.Hab: return _habActions;
-                case StateManager.State.Map: return _mapActions;
+                case State.Hab: return _habActions;
+                case State.Map: return _mapActions;
                 default:
                     Debug.LogError($"Should not be asking for commands in state {Ludum.Dare.State.Current}");
                     return null;
             }
         }
     }
+
+    public void GainFocus() => _rowSelector.GainFocus();
+    public void LoseFocus() => _rowSelector.LoseFocus();
 
     public void RebuildActions() {
         string msg;

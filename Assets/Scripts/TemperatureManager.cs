@@ -5,13 +5,7 @@ public class TemperatureManager: MonoBehaviour {
     [SerializeField] TemperatureBar[] hours;
     [SerializeField] TextMeshProUGUI topline;
 
-    public int Day {
-        get => _day;
-        set {
-            _day = value;
-            rebuildToplineText();
-        }
-    }
+    public int Day { get; private set; }
 
     public int Hour {
         get => _hour;
@@ -23,12 +17,17 @@ public class TemperatureManager: MonoBehaviour {
         }
     }
 
-    int _day;
     int _hour;
+
+    public void OnNextDay() {
+        Day++;
+        Hour = 0;
+        rebuildToplineText();
+    }
 
     // Private
 
     void rebuildToplineText() {
-        topline.text = $"Day {_day}\t\tHours until sleep: {24 - _hour}";
+        topline.text = $"Day {Day}\t\tHours until sleep: {24 - _hour}";
     }
 }
