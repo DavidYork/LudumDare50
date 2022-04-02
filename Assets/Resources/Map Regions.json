@@ -1,0 +1,35 @@
+{ "compressionlevel":-1,
+ "height":13,
+ "hexsidelength":6,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[0, 0, 0, 0, 0, 128, 128, 7, 0, 0, 0, 0, 0, 0, 0, 0, 128, 128, 17, 17, 17, 7, 7, 0, 0, 0, 0, 17, 128, 17, 17, 17, 17, 17, 17, 17, 7, 7, 0, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 7, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 6, 6, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 0, 0, 6, 6, 17, 17, 17, 17, 17, 17, 17, 0, 0, 0, 0, 0, 0, 6, 6, 17, 17, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0],
+         "height":13,
+         "id":1,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":13,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":2,
+ "nextobjectid":1,
+ "orientation":"hexagonal",
+ "renderorder":"right-down",
+ "staggeraxis":"x",
+ "staggerindex":"odd",
+ "tiledversion":"1.8.2",
+ "tileheight":12,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"Glorious Hexagons of DOOM.json"
+        }],
+ "tilewidth":16,
+ "type":"map",
+ "version":"1.8",
+ "width":13
+}

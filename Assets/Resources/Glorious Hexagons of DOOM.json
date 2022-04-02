@@ -1,0 +1,14 @@
+{ "columns":16,
+ "image":"Hex tileset.png",
+ "imageheight":256,
+ "imagewidth":256,
+ "margin":0,
+ "name":"Glorious Hexagons of DOOM",
+ "spacing":0,
+ "tilecount":128,
+ "tiledversion":"1.8.2",
+ "tileheight":32,
+ "tilewidth":16,
+ "type":"tileset",
+ "version":"1.8"
+}
