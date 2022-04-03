@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b00d0e60c64f546dbbe0a8b4081ccfb5
+guid: 98f50b485352e4e31a51bb7bd680d90c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,139 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Objects_0
+      name: Temperature Bars_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 483
-        width: 31
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8554e67f5b1f4762b3f763d3717d66a
-      internalID: 745037749
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Objects_1
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 480
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d7e9f12712d34465a6f5957809da31a
-      internalID: 1869289688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Objects_2
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 488
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0a3a8e24ce3b4d1dad6b7cb21580375
-      internalID: 2119481576
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Objects_3
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 488
-        width: 11
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef244834d19c64345a75275a1434fb81
-      internalID: 768957843
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Objects_4
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 489
-        width: 17
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3ef4b44129fd4593a77e8b19180e817
-      internalID: -484269396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Objects_5
-      rect:
-        serializedVersion: 2
-        x: 163
-        y: 489
-        width: 27
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b41c963d775b45c6bf6e8c50128718f
-      internalID: -1358988046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Objects_6
-      rect:
-        serializedVersion: 2
-        x: 218
-        y: 487
+        x: 2
+        y: 4
         width: 12
-        height: 19
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,8 +142,260 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40ad3d82fe4094837b95292b403f964c
-      internalID: -274522356
+      spriteID: 1850e3fa79fc544bea6b2622c30f943b
+      internalID: 1797911152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f71b4d4ac16cb48fc8c278ea7882319e
+      internalID: 466689380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2c5320fd7c64426a8fe6de74f68d4de
+      internalID: 1285510513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c9e5f0ab01a4f0abb1937df25c615e
+      internalID: 1516540691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d998a312e7ece4c47a78bba3d9df52b7
+      internalID: 1045483217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_5
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477d7f16393474d2684b61bd1bec49d9
+      internalID: 973069208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_6
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2227e7c9338864714a8eabea19784e36
+      internalID: 617656716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47d9be3deb41f488885409c96edad013
+      internalID: 1106230196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_8
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7052ac9577e642bbafdee9dc9842722
+      internalID: -280737475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_9
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 626d207bf309a407fb925298f12d1519
+      internalID: -1637323227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_10
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa34ab8768cf4029bb920f879b08d95
+      internalID: -1891840558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_11
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f02d23b1333b4083bfc73d724364dd4
+      internalID: 1340090590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temperature Bars_12
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 4
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc44acca0775b4d128bc75e72af4b22d
+      internalID: 242993907
       vertices: []
       indices: 
       edges: []
@@ -285,13 +411,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Objects_3: 768957843
-      Objects_5: -1358988046
-      Objects_6: -274522356
-      Objects_0: 745037749
-      Objects_2: 2119481576
-      Objects_4: -484269396
-      Objects_1: 1869289688
+      Temperature Bars_1: 466689380
+      Temperature Bars_4: 1045483217
+      Temperature Bars_5: 973069208
+      Temperature Bars_6: 617656716
+      Temperature Bars_11: 1340090590
+      Temperature Bars_8: -280737475
+      Temperature Bars_10: -1891840558
+      Temperature Bars_9: -1637323227
+      Temperature Bars_0: 1797911152
+      Temperature Bars_3: 1516540691
+      Temperature Bars_12: 242993907
+      Temperature Bars_2: 1285510513
+      Temperature Bars_7: 1106230196
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1

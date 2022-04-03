@@ -5,6 +5,6 @@ EXTERNAL TryPurchase(item)
 EXTERNAL GetEvent(event)
 EXTERNAL GetCost(cost)
 EXTERNAL SetEvent(event, val)
-
+EXTERNAL GainResource(resource, amount)
 EXTERNAL DoReturnToRover()
 EXTERNAL DoGoBackToHab()

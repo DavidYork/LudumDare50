@@ -57,6 +57,8 @@ public class CommandEngine: MonoBehaviour {
         _story.BindExternalFunction("DoGoOutside", doGoOutside);
         _story.BindExternalFunction("DoGoToBed", doGoToBed);
         _story.BindExternalFunction("DoReturnToRover", doReturnToRover);
+        _story.BindExternalFunction("GainResource", (string resource, int amount) =>
+            gainResource(resource, amount));
 
         _story.BindExternalFunction("GetCost", (string costName) => GetCost(Enum.Parse<Cost>(costName)));
         _story.BindExternalFunction("GetEvent", (string eventName) => GetEvent(Enum.Parse<Event>(eventName)));
@@ -73,6 +75,18 @@ public class CommandEngine: MonoBehaviour {
     void doGoBackToHab() => Ludum.Dare.State.Current = State.Hab;
     void doGoToBed() => Ludum.Dare.GM.DoEndDay();
     void doReturnToRover() => Ludum.Dare.Commands.LoseFocus();
+
+    void gainResource(string resource, int amount) {
+        switch (resource) {
+        case "Battery": Ludum.Dare.Resources.Energy.Max += amount; break;
+        case "Energy": Ludum.Dare.Resources.Energy.Amount += amount; break;
+        case "EnergyToHeat": Ludum.Dare.Resources.EnergyToHeat.Amount += amount; break;
+        case "Heat": Ludum.Dare.Resources.Heat.Amount += amount; break;
+        case "Fungus": Ludum.Dare.Resources.Fungus.Amount += amount; break;
+        case "Scrap": Ludum.Dare.Resources.Scrap.Amount += amount; break;
+        default: Debug.LogError($"Cannot understand {resource}"); break;
+        }
+    }
 
     bool tryPurchase(Cost item) {
         var cost = Ludum.Dare.Data.GetCost(item);

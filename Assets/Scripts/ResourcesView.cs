@@ -7,6 +7,8 @@ public class ResourcesView: MonoBehaviour {
     [SerializeField] bool _hasMax;
     [SerializeField] int _max;
 
+    public bool Ratio;
+
     public int Amount {
         get => _amount;
         set {
@@ -37,6 +39,10 @@ public class ResourcesView: MonoBehaviour {
     // Private
 
     void refreshText() {
-        _amountText.text = (_hasMax) ? $"{_amount}\n{_max}" : $"{_amount}";
+        if (Ratio) {
+            _amountText.text = $"1 : {_amount}";
+        } else {
+            _amountText.text = (_hasMax) ? $"{_amount}\n{_max}" : $"{_amount}";
+        }
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TemperatureManager: MonoBehaviour {
     [SerializeField] TemperatureBar[] hours;
+    [SerializeField] Sprite[] barImages;
     [SerializeField] TextMeshProUGUI topline;
 
     public int Day { get; private set; }

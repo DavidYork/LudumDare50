@@ -11,6 +11,7 @@ public class Database: MonoBehaviour {
         public int StartEnergy = 5;
         public int StartScrap = 0;
         public int StartFungus = 0;
+        public int StartEnergyToHeat = 1;
     }
     public ResourcesInfo Resources;
 

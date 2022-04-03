@@ -43,11 +43,14 @@ You are inside the emergency Hab.
 
 
 === Build_Stuff ===
-Improving the Hab requires scrap, and sometimes other materials.
+Improving the Hab requires scrap, and sometimes other materials. -> build_stuff_loop -> DONE
 
-* [<cmd>Improve heater ({ GetCost("first_heater_upgrade") }) </cmd> - Add a battery interface to the heater so it can draw power from the spare batteries when it gets really cold.]
+= build_stuff_loop
+
++ { !GetEvent("can_heat_hab") } [<cmd>Improve heater ({ GetCost("first_heater_upgrade") }) </cmd> - Add a battery interface to the heater so it can draw power from the spare batteries when it gets really cold.]
     { TryPurchase("first_heater_upgrade"):
         ~ SetEvent("can_heat_hab", true)
+        ~ GainResource("EnergyToHeat", 1)
         The current heater and insulation is good enough for some weather, but this planet gets <i>really</i> cold.
         <br/>
         Having the batteries attached to the heater will enable the heaters to draw power if the temperature falls below a certain point.
@@ -55,11 +58,11 @@ Improving the Hab requires scrap, and sometimes other materials.
         -> fail_build ->
     }
 
-+ [<cmd>Nevermind</cmd> - I won't upgrade the Hab right now.] -> Commands.command_loop
++ [<cmd>Done</cmd> - I'm finished working on the Hab now'.] -> Commands.command_loop
 
-- -> Build_Stuff ->
+- -> build_stuff_loop ->
 -> DONE
 
 = fail_build
-You don't have enough resources;
+You don't have enough resources.
 - ->->
