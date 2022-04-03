@@ -5,6 +5,10 @@ using UnityEngine;
 public class Database: MonoBehaviour {
     public float HexSize = 16f;
     public float KeyDebounceTime = .05f;
+    public float HourInWarmGameTime = .2f;
+    public float HourInColdGameTime = .5f;
+    public float HourInGameTime => (Ludum.Dare.Temperature.CurrentColdDamage > 0)
+        ? HourInColdGameTime : HourInWarmGameTime;
 
     [Serializable]
     public class ResourcesInfo {
@@ -17,7 +21,10 @@ public class Database: MonoBehaviour {
 
     [Serializable]
     public class BuildCost {
+        public string Name;
         public Cost Upgrade;
+        public Event CompletionEvent;
+        public int Hours;
         public int Scrap;
         public int Energy;
         public int Batteries;
@@ -29,6 +36,7 @@ public class Database: MonoBehaviour {
             if (Batteries > 0) { maybeComma(sb); sb.Append($"{Batteries} batteries"); }
             if (Energy > 0) { maybeComma(sb); sb.Append($"{Energy} energy"); }
             if (Fungus > 0) { maybeComma(sb); sb.Append($"{Fungus} fungus"); }
+            if (Hours > 0) { sb.Append($", {Hours} hours"); }
             if (sb.Length == 0) { sb.Append("0 scrap"); }
             return sb.ToString();
         }
@@ -59,4 +67,11 @@ public class Database: MonoBehaviour {
         public int BatteryEnergyAmount = 5;
     }
     public MapInfo Map;
+
+    [Serializable]
+    public class RoverInfo {
+        public float SlowSpeed = .5f;
+        public float FastSpeed = .25f;
+    }
+    public RoverInfo Rover;
 }

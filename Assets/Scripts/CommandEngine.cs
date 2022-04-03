@@ -1,6 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using Ink.Runtime;
 
@@ -53,28 +53,47 @@ public class CommandEngine: MonoBehaviour {
     // Private
     void Awake() {
 		_story = new Story (_inkJSONAsset.text);
+        _story.BindExternalFunction("AdvanceTime", (float hours) => doAdvanceTime(hours));
         _story.BindExternalFunction("DoGoBackToHab", doGoBackToHab);
         _story.BindExternalFunction("DoGoOutside", doGoOutside);
         _story.BindExternalFunction("DoGoToBed", doGoToBed);
+        _story.BindExternalFunction("GetTodayIsSafe", () => Ludum.Dare.Temperature.TodayIsSafe);
+        _story.BindExternalFunction("IsBedtime", () => getIsBedtime());
         _story.BindExternalFunction("DoReturnToRover", doReturnToRover);
         _story.BindExternalFunction("GainResource", (string resource, int amount) =>
             gainResource(resource, amount));
+        _story.BindExternalFunction("GetToWork", () => Ludum.Dare.Building.GetToWork());
 
+        _story.BindExternalFunction("HasBuildProject", () => Ludum.Dare.Building.IsBuilding);
+        _story.BindExternalFunction("CanPurchase", (string costName) => canPurchase(Enum.Parse<Cost>(costName)));
         _story.BindExternalFunction("GetCost", (string costName) => GetCost(Enum.Parse<Cost>(costName)));
         _story.BindExternalFunction("GetEvent", (string eventName) => GetEvent(Enum.Parse<Event>(eventName)));
-        _story.BindExternalFunction("TryPurchase", (string costName) => tryPurchase(Enum.Parse<Cost>(costName)));
+        _story.BindExternalFunction("DoPurchase", (string costName) => doPurchase(Enum.Parse<Cost>(costName)));
 
         _story.BindExternalFunction("SetEvent", (string eventName, bool val) =>
             SetEvent(Enum.Parse<Event>(eventName), val));
 
+        _story.BindExternalFunction("GetDeathText", () => getDeathText());
+        _story.BindExternalFunction("DoRestartGame",() => {
+            Debug.Log("Reloading scene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        });
     }
 
 
     // Ink interop
+    void doAdvanceTime(float hours) => Ludum.Dare.Temperature.Hour += hours;
     void doGoOutside() => Ludum.Dare.State.Current = State.Map;
     void doGoBackToHab() => Ludum.Dare.State.Current = State.Hab;
-    void doGoToBed() => Ludum.Dare.GM.DoEndDay();
+    void doGoToBed() => Ludum.Dare.GM.DoGoToBed();
+    bool getIsBedtime() => Ludum.Dare.Temperature.IsBedtime;
     void doReturnToRover() => Ludum.Dare.Commands.LoseFocus();
+
+    string getDeathText() {
+        var temp = Ludum.Dare.Temperature;
+        var text = $"It was inevitable. You froze to death {temp.Day} days and {temp.Hour} hours after crash landing.";
+        return text;
+    }
 
     void gainResource(string resource, int amount) {
         switch (resource) {
@@ -88,22 +107,8 @@ public class CommandEngine: MonoBehaviour {
         }
     }
 
-    bool tryPurchase(Cost item) {
-        var cost = Ludum.Dare.Data.GetCost(item);
-        var res = Ludum.Dare.Resources;
-
-        if (res.Scrap.Amount < cost.Scrap || res.Fungus.Amount < cost.Fungus ||
-            res.Energy.Amount < cost.Energy || res.Energy.Max < cost.Batteries)
-        {
-
-            return false;
-        }
-        res.Scrap.Amount -= cost.Scrap;
-        res.Energy.Amount -= cost.Energy;
-        res.Energy.Max -= cost.Batteries;
-        res.Fungus.Amount -= cost.Fungus;
-        return true;
-    }
+    bool canPurchase(Cost item) => Ludum.Dare.Building.CanAfford(item) && !Ludum.Dare.Building.IsBuilding;
+    void doPurchase(Cost item) => Ludum.Dare.Building.StartBuilding(item);
 
     string GetCost(Cost cost) => Ludum.Dare.Data.GetCost(cost).ToString();
     bool GetEvent(Event evt) => Ludum.Dare.Events.GetEvent(evt);

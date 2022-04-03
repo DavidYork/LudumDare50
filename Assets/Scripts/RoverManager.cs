@@ -4,6 +4,8 @@ public class RoverManager: MonoBehaviour {
     [field: SerializeField]
     public Vector2Int Position { get; private set; }
 
+    public Vector2Int StartPosition;
+
     [SerializeField] Camera _camera;
     [SerializeField] SpriteRenderer _rover;
 
@@ -66,6 +68,11 @@ public class RoverManager: MonoBehaviour {
 
     void moveTo(Vector2Int newPos) {
         Position = newPos;
+        if (Ludum.Dare.Events.GetEvent(Event.faster_rover)) {
+            Ludum.Dare.Temperature.Hour += Ludum.Dare.Data.Rover.FastSpeed;
+        } else {
+            Ludum.Dare.Temperature.Hour += Ludum.Dare.Data.Rover.SlowSpeed;
+        }
         repositionMap();
     }
 

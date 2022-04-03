@@ -13,6 +13,9 @@ public enum Event {
     rover_upgrade_rough_terrain,
     can_harvest_crystal,
     has_seen_crystal,
+    faster_rover,
+    has_seen_epic_cold,
+    has_been_outside,
 }
 
 public enum State {

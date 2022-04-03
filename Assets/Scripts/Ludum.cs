@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class Ludum: MonoBehaviour {
+    public bool GameIsOver;
     public static Ludum Dare {
         get {
             if (_dare != null) {
@@ -24,6 +25,8 @@ public class Ludum: MonoBehaviour {
     public World World;
     public RoverManager Rover;
     public EventManager Events;
+    public BuildingManager Building;
+    public HeatManager Heat;
 
     // Private
 

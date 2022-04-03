@@ -220,7 +220,7 @@ TextureImporter:
         width: 33
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 8, y: 10, z: 8, w: 10}
       outline: []
       physicsShape: []
@@ -228,6 +228,48 @@ TextureImporter:
       bones: []
       spriteID: d3b7e3e3117174316bfe3fc835e68b05
       internalID: -255852907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI__Temp_Now
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 82
+        width: 30
+        height: 14
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a85eff41ad6f64000a96a4a7df65c315
+      internalID: -1502559099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Temp_Danger
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 82
+        width: 30
+        height: 14
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7274c6bf390a4cbdaf077377603e5c4
+      internalID: -311021073
       vertices: []
       indices: 
       edges: []
@@ -243,9 +285,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      UI_Temp_Danger: -311021073
       UI_Window: -800429977
       UI_Down: -72121128
       UI_DarkPanel: -255852907
+      UI__Temp_Now: -1502559099
       UI_SelectedRow: -523894899
       UI_Up: -943305115
   spritePackingTag: 

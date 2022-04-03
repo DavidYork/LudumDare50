@@ -52,7 +52,8 @@ public class World: MonoBehaviour {
 
     void Start() {
         SpawnMissingMaps();
-        Ludum.Dare.Rover.SetPosition(new Vector2Int(_mapSizeInHexes.x / 2, _mapSizeInHexes.y / 2));
+        Ludum.Dare.Rover.StartPosition = new Vector2Int(_mapSizeInHexes.x / 2, _mapSizeInHexes.y / 2);
+        Ludum.Dare.Rover.SetPosition(Ludum.Dare.Rover.StartPosition);
     }
 
     Hexmap spawnMap(Vector2Int regionPos) {

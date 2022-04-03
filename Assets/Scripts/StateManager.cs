@@ -16,6 +16,7 @@ public class StateManager: MonoBehaviour {
                 Ludum.Dare.Dream.Hide();
                 break;
             case State.Map:
+                Ludum.Dare.Rover.SetPosition(Ludum.Dare.Rover.StartPosition);
                 Ludum.Dare.Hab.Hide();
                 Ludum.Dare.Map.Show();
                 Ludum.Dare.Dream.Hide();

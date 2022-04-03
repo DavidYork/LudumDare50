@@ -26,7 +26,7 @@ public class DreamManager: MonoBehaviour {
     // Private
 
     void Awake() => dreams = dreamContent.text.Split('\n');
-    void endDream() => Ludum.Dare.State.Current = State.Hab;
+    void endDream() => Ludum.Dare.GM.DoStartDay();
 
     string getTodaysDream() {
         var idx = (Mathf.Min(dreams.Length - 1, Ludum.Dare.Temperature.Day));

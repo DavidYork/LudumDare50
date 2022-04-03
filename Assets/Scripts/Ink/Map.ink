@@ -7,6 +7,11 @@ INCLUDE exports.ink
 === Commands ===
 You head outside.
 
+{ GetEvent("has_been_outside") == false:
+    <br/>
+    You take your heater and the batteries with you, just in case.
+    ~ SetEvent("has_been_outside", true)
+}
 -> command_loop
 -> DONE
 
@@ -16,6 +21,7 @@ You head outside.
     ~ DoReturnToRover()
 + [<cmd>Return home</cmd> - I've seen enough today.]
     ~ DoGoBackToHab()
+    ~ AdvanceTime(1)
 - -> command_loop ->
 -> DONE
 
@@ -51,4 +57,20 @@ I should study my sample at the lab, maybe I can learn something useful.
 
 === Interact_Rough ===
 Rough terrain!
+-> DONE
+
+=== Sleep ===
+You're getting very tired.
++ [<cmd>Return to the Hab</cmd>  - Time to sleep.]
+    ~ DoGoBackToHab()
+    ~ DoGoToBed()
+
+- -> Commands
+-> DONE
+
+=== Gameover
+{ GetDeathText() }
+
++ [<cmd>Play again</cmd> - Next time I'll live longer.]
+    ~ DoRestartGame()
 -> DONE
