@@ -3,7 +3,8 @@ using System.Text;
 using UnityEngine;
 
 public class Database: MonoBehaviour {
-    public float hexSize = 16f;
+    public float HexSize = 16f;
+    public float KeyDebounceTime = .05f;
 
     [Serializable]
     public class ResourcesInfo {
@@ -49,4 +50,12 @@ public class Database: MonoBehaviour {
         return new BuildCost() { Upgrade = item };
     }
 
+    [Serializable]
+    public class MapInfo {
+        public int ScrapAmount = 3;
+        public int FungusAmount = 1;
+        public int BatteryAmount = 5;
+        public int BatteryEnergyAmount = 5;
+    }
+    public MapInfo Map;
 }

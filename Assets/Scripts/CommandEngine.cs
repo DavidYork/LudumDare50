@@ -27,7 +27,6 @@ public class CommandEngine: MonoBehaviour {
 	[SerializeField] TextAsset _inkJSONAsset;
 
     Story _story;
-    Dictionary<Event, bool> _events;
 
     public void ExecuteCommand(Command command) {
         _story.ChooseChoiceIndex(command.ChoiceIndex);
@@ -49,13 +48,15 @@ public class CommandEngine: MonoBehaviour {
         }
     }
 
+    public void ResetPosition(string position) => _story.ChoosePathString(position);
+
     // Private
     void Awake() {
-        _events = new Dictionary<Event, bool>();
-
 		_story = new Story (_inkJSONAsset.text);
+        _story.BindExternalFunction("DoGoBackToHab", doGoBackToHab);
         _story.BindExternalFunction("DoGoOutside", doGoOutside);
         _story.BindExternalFunction("DoGoToBed", doGoToBed);
+        _story.BindExternalFunction("DoReturnToRover", doReturnToRover);
 
         _story.BindExternalFunction("GetCost", (string costName) => GetCost(Enum.Parse<Cost>(costName)));
         _story.BindExternalFunction("GetEvent", (string eventName) => GetEvent(Enum.Parse<Event>(eventName)));
@@ -69,7 +70,9 @@ public class CommandEngine: MonoBehaviour {
 
     // Ink interop
     void doGoOutside() => Ludum.Dare.State.Current = State.Map;
+    void doGoBackToHab() => Ludum.Dare.State.Current = State.Hab;
     void doGoToBed() => Ludum.Dare.GM.DoEndDay();
+    void doReturnToRover() => Ludum.Dare.Commands.LoseFocus();
 
     bool tryPurchase(Cost item) {
         var cost = Ludum.Dare.Data.GetCost(item);
@@ -89,14 +92,6 @@ public class CommandEngine: MonoBehaviour {
     }
 
     string GetCost(Cost cost) => Ludum.Dare.Data.GetCost(cost).ToString();
-
-    bool GetEvent(Event evt) {
-        bool val = false;
-        _events.TryGetValue(evt, out val);
-        return val;
-    }
-
-    void SetEvent(Event evt, bool val) {
-        _events[evt] = val;
-    }
+    bool GetEvent(Event evt) => Ludum.Dare.Events.GetEvent(evt);
+    void SetEvent(Event evt, bool val) => Ludum.Dare.Events.SetEvent(evt, val);
 }

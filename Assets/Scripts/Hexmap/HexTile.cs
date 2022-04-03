@@ -7,6 +7,8 @@ public class HexTile: MonoBehaviour {
     public Vector2Int Pos { get; private set; }
     public int TileID { get; set; }
 
+    TMXMapInfo _map;
+
     public bool HiddenByFog {
         get => fogOfWar.gameObject.activeSelf;
         set {
@@ -15,7 +17,21 @@ public class HexTile: MonoBehaviour {
         }
     }
 
-    public void Setup(Vector2Int pos, int tileID, Sprite ground, bool hiddenByFog) {
+    public void ChangeHexType(int newID) {
+        TileID = newID;
+        int tileSrcId;
+        TMXMapInfo.TMXTilesetInfo tileset;
+
+        if (!_map.GetSourceTile(out tileSrcId, out tileset, newID)) {
+            Debug.LogError($"Cannot find tile {newID}");
+            return;
+        }
+
+        ground.sprite = HexFactory.Inst.SpriteFromTileset(tileSrcId, tileset);
+    }
+
+    public void Setup(TMXMapInfo map, Vector2Int pos, int tileID, Sprite ground, bool hiddenByFog) {
+        _map = map;
         Pos = pos;
         TileID = tileID;
         HiddenByFog = hiddenByFog;

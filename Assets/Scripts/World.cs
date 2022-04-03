@@ -12,11 +12,6 @@ public class World: MonoBehaviour {
     public HexType GetHexType(Vector2Int worldPos) {
         var tile = GetHexTileAt(worldPos);
         var rv = tile.ToHexType();
-
-        if (rv == HexType.Blocked) {
-            Debug.Log($"Blocked world={worldPos}, tile={tile.name}");
-        }
-
         return rv;
     }
 
@@ -68,8 +63,8 @@ public class World: MonoBehaviour {
         centerView.transform.SetParent(mapRoot);
         centerView.transform.localPosition = new Vector3(
             regionPos.x * centerView.SizeInWorld.x,
-            regionPos.y * centerView.SizeInWorld.y,
-            (float)regionPos.y * 2f
+            -regionPos.y * centerView.SizeInWorld.y,
+            -(float)regionPos.y * 2f
         );
         return centerView;
     }

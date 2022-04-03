@@ -23,6 +23,7 @@ public class Ludum: MonoBehaviour {
     public Database Data;
     public World World;
     public RoverManager Rover;
+    public EventManager Events;
 
     // Private
 

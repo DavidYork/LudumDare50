@@ -27,7 +27,7 @@ public static class HexExtensions {
             break;
         }
 
-        if (src.x % 2 != 1 && (dir != Direction.North && dir != Direction.South)) {
+        if (src.x % 2 == 0 && (dir != Direction.North && dir != Direction.South)) {
             rv.y -= 1;
         }
 
@@ -36,6 +36,19 @@ public static class HexExtensions {
 
     public static HexType ToHexType(this HexTile tile) {
         var id = tile.TileID;
+
+        switch (id) {
+        case 17: return HexType.Fungus;
+        case 19:
+        case 20:
+            return HexType.Hab;
+        case 21:
+        case 23:
+            return HexType.Scrap;
+        case 25:
+            return HexType.Battery;
+        }
+
         var row = (id - 1) / 16;
         if (row % 2 == 0) {
             return HexType.Blocked;

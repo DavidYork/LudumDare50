@@ -10,6 +10,9 @@ public enum Event {
     knows_about_rover,
     heating_is_on,
     alarm_is_on,
+    rover_upgrade_rough_terrain,
+    can_harvest_crystal,
+    has_seen_crystal,
 }
 
 public enum State {
@@ -26,5 +29,5 @@ public enum Direction {
 }
 
 public enum HexType {
-    Open, Rough, Blocked, Fungus, Scrap,
+    Open, Rough, Blocked, Fungus, Scrap, Hab, Battery,
 }

@@ -1,10 +1,4 @@
-// Exports to C#
-EXTERNAL DoGoOutside()
-EXTERNAL DoGoToBed()
-EXTERNAL TryPurchase(item)
-EXTERNAL GetEvent(event)
-EXTERNAL GetCost(cost)
-EXTERNAL SetEvent(event, val)
+INCLUDE exports.ink
 
 // Program entry point
 -> Commands
@@ -34,8 +28,8 @@ You are inside the emergency Hab.
     You tell the rover to drive to Hab and within minutes it's parked out front.
 
 + { GetEvent("has_rover") } [<cmd>Go outside</cmd> - Explore with the rover.]
+    You head outside.
     ~ DoGoOutside()
-    Text and more text!
 
 + [<cmd>Work on the Hab</cmd> - The Hab could use an upgrade.]
     -> Build_Stuff

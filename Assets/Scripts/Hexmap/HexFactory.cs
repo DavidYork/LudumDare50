@@ -25,7 +25,7 @@ public class HexFactory: MonoBehaviour {
             0);
 
         var tile = Instantiate<HexTile>(hexTilePrefab);
-        tile.Setup(pos, mapTileID, SpriteFromTileset(tileSrcId, tileset), HideHexesOnCreate);
+        tile.Setup(map, pos, mapTileID, SpriteFromTileset(tileSrcId, tileset), HideHexesOnCreate);
         tile.transform.SetParent(parent);
         var spacing = new Vector2(map.tilewidth, map.tileheight);
         tile.transform.localPosition = getHexPos(pos, spacing) - mapOffset;

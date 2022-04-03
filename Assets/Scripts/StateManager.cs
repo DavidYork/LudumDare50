@@ -12,18 +12,16 @@ public class StateManager: MonoBehaviour {
                 Ludum.Dare.Commands.GainFocus();
                 Ludum.Dare.Hab.Show();
                 Ludum.Dare.Map.Hide();
-                setupCommands();
+                setupCommands(true);
                 Ludum.Dare.Dream.Hide();
-                Ludum.Dare.Computer.SetText("You are inside the Hab.");
                 break;
             case State.Map:
-                Ludum.Dare.Commands.LoseFocus();
                 Ludum.Dare.Hab.Hide();
                 Ludum.Dare.Map.Show();
-                setupCommands();
                 Ludum.Dare.Dream.Hide();
-                Ludum.Dare.Computer.SetText("You are in your rover, outside the Hab.");
                 Ludum.Dare.Rover.OnEnterMapState();
+                setupCommands(true);
+                Ludum.Dare.Commands.LoseFocus();
                 break;
             case State.Dream:
                 Ludum.Dare.Commands.LoseFocus();
@@ -46,10 +44,10 @@ public class StateManager: MonoBehaviour {
 
     // Private
 
-    void setupCommands() {
+    void setupCommands(bool resetPosition) {
         if (!Application.isPlaying) {
             return;
         }
-        Ludum.Dare.Commands.RebuildActions();
+        Ludum.Dare.Commands.RebuildActions("Commands");
     }
 }
