@@ -40,7 +40,14 @@ public class BuildingManager: MonoBehaviour {
         res.Energy.Amount -= bc.Energy;
         res.Energy.Max -= bc.Batteries;
         res.Fungus.Amount -= bc.Fungus;
+        if (res.Energy.Amount > res.Energy.Max) {
+            res.Energy.Max = res.Energy.Amount;
+        }
         GetToWork();
+    }
+
+    public string GetBuildProjectText() {
+        return $"Resume work on the {_projectDetails.Name}.";
     }
 
     // Private
@@ -72,6 +79,23 @@ public class BuildingManager: MonoBehaviour {
         Ludum.Dare.Commands.RebuildActions("Commands");
         Ludum.Dare.Computer.SetText($"You have finished the {_projectDetails.Name}.");
         Ludum.Dare.Events.SetEvent(_projectDetails.CompletionEvent, true);
+
+        var res = Ludum.Dare.Resources;
+        switch (_projectDetails.CompletionEvent) {
+        case Event.can_heat_hab:
+            res.EnergyToHeat.Amount++;
+            break;
+        case Event.has_insulation:
+            Ludum.Dare.Temperature.OnInstallInsulation(Ludum.Dare.Data.Hab.InsulationAmount);
+            break;
+        case Event.has_epic_insulation:
+            Ludum.Dare.Temperature.OnInstallInsulation(Ludum.Dare.Data.Hab.EpicInsulationAmount);
+            break;
+        case Event.has_efficient_heater:
+            res.EnergyToHeat.Amount++;
+            break;
+        }
+
         _projectDetails = null;
         _working = false;
     }

@@ -49,11 +49,9 @@ public class TemperatureManager: MonoBehaviour {
         get {
             foreach (var temp in hours) {
                 if (temp.ColdDamage > 0) {
-                    Debug.Log("Unsafe");
                     return false;
                 }
             }
-            Debug.Log("Safe");
             return true;
         }
     }
@@ -77,6 +75,12 @@ public class TemperatureManager: MonoBehaviour {
         rebuildToplineText();
     }
 
+    public void OnInstallInsulation(int amount) {
+        foreach (var hour in hours) {
+            hour.Cold -= amount;
+        }
+    }
+
     public Sprite IconForTemp(int temp) {
         temp = Mathf.Min(temp, barImages.Length - 1);
         return barImages[temp];
@@ -97,6 +101,10 @@ public class TemperatureManager: MonoBehaviour {
         var partial = time - (float)(int)time;
         var minutes = 60f * partial;
         var strMin = $"{minutes}";
+        int index = strMin.IndexOf(".");
+        if (index >= 0) {
+            strMin = strMin.Substring(0, index);
+        }
         while (strMin.Length < 2) {
             strMin += "0";
         }

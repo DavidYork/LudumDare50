@@ -74,6 +74,7 @@ public class CommandEngine: MonoBehaviour {
             SetEvent(Enum.Parse<Event>(eventName), val));
 
         _story.BindExternalFunction("GetDeathText", () => getDeathText());
+        _story.BindExternalFunction("GetBuildProjectText", () => getBuildProjectText());
         _story.BindExternalFunction("DoRestartGame",() => {
             Debug.Log("Reloading scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -113,4 +114,5 @@ public class CommandEngine: MonoBehaviour {
     string GetCost(Cost cost) => Ludum.Dare.Data.GetCost(cost).ToString();
     bool GetEvent(Event evt) => Ludum.Dare.Events.GetEvent(evt);
     void SetEvent(Event evt, bool val) => Ludum.Dare.Events.SetEvent(evt, val);
+    string getBuildProjectText() => Ludum.Dare.Building.GetBuildProjectText();
 }

@@ -26,7 +26,7 @@ public static class Kbd {
     // Private
 
     static bool alive(float startTime) {
-        return Time.time > startTime + Ludum.Dare.Data.KeyDebounceTime;
+        return Time.time > startTime + .05f;//Ludum.Dare.Data.KeyDebounceTime;
     }
 
     static bool checkCmd(float startTime, params KeyCode[] keys) {

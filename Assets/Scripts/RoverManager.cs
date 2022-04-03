@@ -34,6 +34,13 @@ public class RoverManager: MonoBehaviour {
                 Ludum.Dare.Computer.SetText("That ground is too rough, your rover cannot travel there.");
             }
             break;
+        case HexType.Silt:
+            if (Ludum.Dare.Events.GetEvent(Event.rover_upgrade_silt_terrain)) {
+                moveTo(newPos);
+            } else {
+                Ludum.Dare.Computer.SetText("That ground is like quicksand! Your rover cannot travel there.");
+            }
+            break;
         case HexType.Blocked:
             Ludum.Dare.Computer.SetText("You can't move there");
             // TODO: Play sound
@@ -68,7 +75,11 @@ public class RoverManager: MonoBehaviour {
 
     void moveTo(Vector2Int newPos) {
         Position = newPos;
-        if (Ludum.Dare.Events.GetEvent(Event.faster_rover)) {
+        if (Ludum.Dare.Events.GetEvent(Event.faster_engine_3)) {
+            Ludum.Dare.Temperature.Hour += Ludum.Dare.Data.Rover.FastestSpeed;
+        } else if (Ludum.Dare.Events.GetEvent(Event.faster_engine_2)) {
+            Ludum.Dare.Temperature.Hour += Ludum.Dare.Data.Rover.FasterSpeed;
+        } else if (Ludum.Dare.Events.GetEvent(Event.faster_engine_1)) {
             Ludum.Dare.Temperature.Hour += Ludum.Dare.Data.Rover.FastSpeed;
         } else {
             Ludum.Dare.Temperature.Hour += Ludum.Dare.Data.Rover.SlowSpeed;

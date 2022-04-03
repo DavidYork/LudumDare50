@@ -35,7 +35,7 @@ public class Database: MonoBehaviour {
             if (Scrap > 0) { sb.Append($"{Scrap} scrap"); }
             if (Batteries > 0) { maybeComma(sb); sb.Append($"{Batteries} batteries"); }
             if (Energy > 0) { maybeComma(sb); sb.Append($"{Energy} energy"); }
-            if (Fungus > 0) { maybeComma(sb); sb.Append($"{Fungus} fungus"); }
+            if (Fungus > 0) { maybeComma(sb); sb.Append($"{Fungus} crystals"); }
             if (Hours > 0) { sb.Append($", {Hours} hours"); }
             if (sb.Length == 0) { sb.Append("0 scrap"); }
             return sb.ToString();
@@ -71,7 +71,16 @@ public class Database: MonoBehaviour {
     [Serializable]
     public class RoverInfo {
         public float SlowSpeed = .5f;
-        public float FastSpeed = .25f;
+        public float FastSpeed = .3333333333f;
+        public float FasterSpeed = .25f;
+        public float FastestSpeed = .083333333f;
     }
     public RoverInfo Rover;
+
+    [Serializable]
+    public class HabInfo {
+        public int InsulationAmount = 3;
+        public int EpicInsulationAmount = 5;
+    }
+    public HabInfo Hab;
 }

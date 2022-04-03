@@ -15,7 +15,14 @@ public class TemperatureBar: MonoBehaviour {
     public int Cold {
         get => _cold;
         set {
-            _cold = Mathf.Max(0, value);
+            _cold = value;
+            if (Ludum.Dare.Events.GetEvent(Event.has_insulation)) {
+                _cold -= Ludum.Dare.Data.Hab.InsulationAmount;
+            }
+            if (Ludum.Dare.Events.GetEvent(Event.has_epic_insulation)) {
+                _cold -= Ludum.Dare.Data.Hab.EpicInsulationAmount;
+            }
+            _cold = Mathf.Max(0, _cold);
             Icon.sprite = Ludum.Dare.Temperature.IconForTemp(_cold);
             _cursor.sprite = (ColdDamage > 0) ? _dangerCursor : _safeCursor;
         }
