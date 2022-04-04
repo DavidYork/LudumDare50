@@ -52,4 +52,7 @@ Builds_BurstDebugInformation_DoNotShip
 # A mysterious file appears
 mono_crash.*.json
 
+# WebGL builds
+Builds.zip
+
 

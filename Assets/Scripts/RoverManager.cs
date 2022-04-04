@@ -46,7 +46,7 @@ public class RoverManager: MonoBehaviour {
             // TODO: Play sound
             break;
         case HexType.Fungus:
-            if (Ludum.Dare.Events.GetEvent(Event.can_harvest_crystal)) {
+            if (Ludum.Dare.Events.GetEvent(Event.can_harvest_crystal) || Ludum.Dare.Events.GetEvent(Event.has_crystal_extractor)) {
                 targetHex.ChangeHexType(targetHex.TileID + 1);
                 Ludum.Dare.Computer.SetText("More mysterious purple crystal. This is fascinating stuff.");
                 Ludum.Dare.Resources.Fungus.Amount += Ludum.Dare.Data.Map.FungusAmount;

@@ -9,6 +9,8 @@ INCLUDE exports.ink
     - GetEvent("has_seen_epic_cold") || GetTodayIsSafe():
         You are inside the emergency Hab.
     - GetEvent("can_heat_hab"):
+        <color=red>WARNING!</color>
+        <br/>
         The temperature today is going to drop to extreme levels. The heater is going to pull power from your batteries to keep it warm.
         ~ SetEvent("has_seen_epic_cold", true)
     - else:

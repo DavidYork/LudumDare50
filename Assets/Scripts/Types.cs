@@ -23,7 +23,7 @@ public enum Event {
     rover_upgrade_rough_terrain,
     rover_upgrade_silt_terrain,
     can_harvest_crystal, // Do not use
-    has_seen_crystal,
+    has_seen_crystal, // Do not use
     faster_rover,   // Do not use
     has_seen_epic_cold,
     has_been_outside,
